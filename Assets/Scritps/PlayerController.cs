@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public int shield { get { return shieldBase + shieldUp; } }
+    [SerializeField]
+    public int firePower { get { return firePowerBase + firePowerUp; } }
+    [SerializeField]
+    public int fireSpeed { get { return fireSpeedBase + fireSpeedUp; } }
+
+    // The base value
+    int shieldBase;
+    int firePowerBase;
+    int fireSpeedBase;
+
+    // The upgraded or downgraded amounts
+    int shieldUp;
+    int firePowerUp;
+    int fireSpeedUp;
+
     public GameObject bulletPrefab;
     new Rigidbody2D rigidbody;
 
@@ -13,19 +29,35 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rigidbody = GetComponent<Rigidbody2D>();
+
+        // Generate values between one and five.
+        // You have five to spend
+        int toSpend = 7;
+
+        int value = Random.Range(2, Mathf.Min(4, toSpend));
+        shieldBase += value;
+        toSpend -= value;
+
+        value = Random.Range(2, Mathf.Min(4, toSpend));
+        firePowerBase = value;
+        toSpend -= value;
+
+        fireSpeedBase = toSpend;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         // Rotate the player towards the mouse button
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Quaternion rotation = Quaternion.LookRotation((transform.position - mousePos), Vector3.forward);
+        Quaternion rotation = Quaternion.LookRotation((transform.position - mousePos), 
+                                                      Vector3.forward);
         rotation = Quaternion.Euler(0, 0, rotation.eulerAngles.z);
         transform.rotation = rotation;
 
 
 		if (Input.GetMouseButtonDown(0)) {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position + transform.up, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrefab, transform.position + 
+                transform.up, Quaternion.identity);
             Vector2 force = transform.up * bulletForce;
             Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
 
@@ -34,4 +66,32 @@ public class PlayerController : MonoBehaviour {
             rigidbody.AddForce(-force, ForceMode2D.Impulse);
         }
 	}
+
+    void OnTriggerEnter2D(Collider2D other) {
+        switch (other.gameObject.tag) {
+        case "Shield Field":
+            shieldUp += 1;
+            break;
+        case "Damage Field":
+            firePowerUp += 1;
+            break;
+        case "Speed Field":
+            fireSpeedUp += 1;
+            break;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+        switch (other.gameObject.tag) {
+        case "Shield Field":
+            shieldUp -= 1;
+            break;
+        case "Damage Field":
+            firePowerUp -= 1;
+            break;
+        case "Speed Field":
+            fireSpeedUp -= 1;
+            break;
+        }
+    }
 }
