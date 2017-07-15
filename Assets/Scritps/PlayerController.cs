@@ -56,6 +56,9 @@ public class PlayerController : MonoBehaviour {
 
 
 		if (Input.GetMouseButtonDown(0)) {
+            if (rigidbody.IsSleeping()) {
+                rigidbody.WakeUp();
+            }
             GameObject bullet = Instantiate(bulletPrefab, transform.position + 
                 transform.up, Quaternion.identity);
             Vector2 force = transform.up * bulletForce;
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         switch (other.gameObject.tag) {
+        // Effect fields
         case "Shield Field":
             shieldUp += 1;
             break;
@@ -78,11 +82,23 @@ public class PlayerController : MonoBehaviour {
         case "Speed Field":
             fireSpeedUp += 1;
             break;
+        
+        // Base
+        case "Base":
+            FindObjectOfType<UIManager>().TurnGoalPanelOn();
+            // Stop that shizl
+            transform.position = other.transform.position;
+            transform.rotation = other.transform.rotation;
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.Sleep();
+            break;
         }
+
     }
 
     void OnTriggerExit2D(Collider2D other) {
         switch (other.gameObject.tag) {
+        // Effect fields
         case "Shield Field":
             shieldUp -= 1;
             break;
@@ -91,6 +107,11 @@ public class PlayerController : MonoBehaviour {
             break;
         case "Speed Field":
             fireSpeedUp -= 1;
+            break;
+
+        // Base
+        case "Base":
+            FindObjectOfType<UIManager>().TurnGoalPanelOff();
             break;
         }
     }

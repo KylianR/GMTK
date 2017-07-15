@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
+    public Text objectiveText;
+    public RectTransform goalPanel;
+
+    [Header("Speedometer")]
     public string formatText = "{0} Km/h";
     public Text speedText;
     public Transform player;
-
-    public Vector3 prevPosition;
 
     [Header("Targeting")]
     public int offset = 10;
@@ -19,10 +21,10 @@ public class UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        TurnGoalPanelOff();
         if (player == null) {
             player = GameObject.FindWithTag("Player").transform;
         }		
-        prevPosition = player.position;
 
         GameObject[] gos = GameObject.FindGameObjectsWithTag("Target");
         foreach (GameObject go in gos) {
@@ -38,7 +40,6 @@ public class UIManager : MonoBehaviour {
 	void Update () {
 		float kmph = player.GetComponent<Rigidbody2D>().velocity.magnitude * 3.6f;
         speedText.text = string.Format(formatText, kmph.ToString("0.00"));
-        prevPosition = player.position;
 
         // Do UI things
         for (int targetIndex = 0; targetIndex < targets.Count; targetIndex++) {
@@ -56,5 +57,18 @@ public class UIManager : MonoBehaviour {
             float angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90;
             uiTargets[targetIndex].rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
+
+        // Objective text
+        objectiveText.text = "Current Objective: " + 
+            ((GameManager.Instance.currentObjective)?
+                GameManager.Instance.currentObjective.name : 
+                "none");
 	}
+
+    public void TurnGoalPanelOn() {
+        goalPanel.gameObject.SetActive(true);
+    }
+    public void TurnGoalPanelOff() {
+        goalPanel.gameObject.SetActive(false);
+    }
 }

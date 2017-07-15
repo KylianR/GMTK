@@ -9,6 +9,13 @@ using UnityEditor;
 public class FloatRange {
     public float min;
     public float max;
+    private int v1;
+    private int v2;
+
+    public FloatRange(int v1, int v2) {
+        this.v1 = v1;
+        this.v2 = v2;
+    }
 }
 
 public class AstroidSpawner : MonoBehaviour {

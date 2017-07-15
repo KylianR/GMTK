@@ -6,7 +6,7 @@ public class BulletManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Invoke("Destroy", 1000);
+		Destroy(gameObject, 10);
 	}
 	
 	// Update is called once per frame

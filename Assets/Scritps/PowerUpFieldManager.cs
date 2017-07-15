@@ -38,15 +38,4 @@ public class PowerUpFieldManager : MonoBehaviour {
 	void Update () {
 	    
 	}
-
-    void OnDrawGizmos() {
-        if (polygon == null) { polygon = GetComponent<PolygonCollider2D>(); }
-        Vector2[] points = polygon.points;
-        for(int pointIndex = 1; pointIndex < polygon.points.Length; pointIndex++) {
-            Gizmos.DrawLine(transform.position + (Vector3)points[pointIndex - 1], 
-                            transform.position + (Vector3)points[pointIndex]);
-        }
-        Gizmos.DrawLine(transform.position + (Vector3)points[points.Length - 1], 
-                        transform.position + (Vector3)points[0]);
-    }
 }
