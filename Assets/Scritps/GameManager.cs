@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    // Objective variables
+    // Destroy Objecive
+    GameObject destroyObjectiveTarget;
+
+    // 
+
     public Objective currentObjective;
 
     // Use this for initialization
@@ -23,11 +29,27 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (currentObjective != null) {
+            // Check objective conditions
+            switch(currentObjective.type) {
+                case ObjectiveType.DestroyMission: {
+                    // Check if object is destored
+                } break;
+
+                case ObjectiveType.CollectionMission: {
+                    // Check if correct amount of objects of a type are gathered.
+                } break;
+            }
+        }
 	}
 
-    public void DestroyEnemy(GameObject enemy) {
+    public void PickedUpItem(GameObject item) {
+    }
 
+    public void DestroyEnemy(GameObject enemy) {
+        if (destroyObjectiveTarget == enemy) {
+            // Success!!!
+        }
         Destroy(enemy);
     }
 }

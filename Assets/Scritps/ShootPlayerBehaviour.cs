@@ -31,6 +31,7 @@ public class ShootPlayerBehaviour : MonoBehaviour {
                     transform.position + transform.forward, Quaternion.identity);
                 bullet.GetComponent<Rigidbody2D>().AddForce(transform.forward * 
                     bulletSpeed, ForceMode2D.Impulse);
+                yield return new WaitForSeconds(0.2f);
             }
         }
         yield return new WaitForSeconds(Random.Range(shootDelay.min, 
