@@ -6,26 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Maze Chunk 2.unity
-    guid: 7973b18328ee7f749892b2da61106afe
+    path: Assets/menu.unity
+    guid: 8d0719de5cba89643b7aea7da8590c17
   - enabled: 1
-    path: Assets/Asteroid Chunk 2.unity
-    guid: 9077aa69affb0d643b5e4f2a883f9e98
-  - enabled: 1
-    path: Assets/AsteroidChunk.unity
-    guid: c120a2ee26c0fc742a63f43ec5efb935
-  - enabled: 1
-    path: Assets/Battle Arena Chunk.unity
-    guid: b463835942430504a9066a284f988313
-  - enabled: 1
-    path: Assets/Maze Chunk.unity
-    guid: e30db6b646763bf4e97242b59221fe02
-  - enabled: 1
-    path: Assets/Spawn Chunk.unity
-    guid: f0a0bc056cb98964a86e6ca5c5747022
-  - enabled: 1
-    path: Assets/Planet Chunk.unity
-    guid: dceeb7f0b181e374cb49ea8ac13596c9
-  - enabled: 1
-    path: Assets/Template Chunk.unity
-    guid: 57d006643de59d9478bdf07cc1d19641
+    path: Assets/main.unity
+    guid: ae473cd4df24a7840ab17c7abd933011
