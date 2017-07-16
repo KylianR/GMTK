@@ -5,8 +5,7 @@ using UnityEngine;
 public class SearchPlayerBehaviour : MonoBehaviour {
 
     public float playerSpeedMultiplier = 0.475f;
-    public bool minDistance = true;
-    public float minPlayerDist = 100;
+    public float distanceToPlayer = 20;
 
     Transform player;
     Rigidbody2D playerRigid;
@@ -22,15 +21,15 @@ public class SearchPlayerBehaviour : MonoBehaviour {
 	void FixedUpdate () {
 
         float speed = 15 + (playerRigid.velocity.magnitude) * playerSpeedMultiplier; 
-        if (!minDistance || (minDistance && Vector3.Distance(
-            transform.position, player.position) <= minPlayerDist)) {
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance > distanceToPlayer) {
             transform.position = Vector3.MoveTowards(transform.position, 
                 player.position, speed * Time.deltaTime);
-
-            // Rotate towards the player
-            Vector3 diff = (player.position - transform.position);
-            float angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
+
+        // Rotate towards the player
+        Vector3 diff = (player.position - transform.position);
+        float angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	}
 }

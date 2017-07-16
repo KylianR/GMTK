@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeedMultiplier: 0.9
   minDistance: 0
+  distanceToPlayer: 0
   minPlayerDist: 100
 --- !u!114 &114697601711119948
 MonoBehaviour:

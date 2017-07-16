@@ -246,7 +246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeedMultiplier: 0.475
-  minDistance: 1
+  minDistance: 0
+  distanceToPlayer: 20
   minPlayerDist: 100
 --- !u!212 &212318956438318808
 SpriteRenderer:
