@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour {
             Shoot();
 
         }
-        if (Input.GetMouseButton(0) && Time.time - lastShotTime > bulletDelay) {
+        if (Input.GetMouseButton(0) && Time.time - lastShotTime > (bulletDelay / fireSpeed)) {
             lastShotTime = Time.time;
             Shoot();
         }
