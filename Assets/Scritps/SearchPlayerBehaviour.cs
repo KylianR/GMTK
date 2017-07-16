@@ -9,15 +9,19 @@ public class SearchPlayerBehaviour : MonoBehaviour {
     public float minPlayerDist = 100;
 
     Transform player;
+    Rigidbody2D playerRigid;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindWithTag("Player").transform;
-	}
+        playerRigid = player.GetComponent<Rigidbody2D>();
+
+    }
 	
 	// Update is called once per frame
-	void Update () {
-		if (!minDistance || (minDistance && Vector3.Distance(
+	void FixedUpdate () {
+        speed = 1 + (playerRigid.velocity.magnitude) * 0.475f; 
+        if (!minDistance || (minDistance && Vector3.Distance(
             transform.position, player.position) <= minPlayerDist)) {
             transform.position = Vector3.MoveTowards(transform.position, 
                 player.position, speed * Time.deltaTime);
