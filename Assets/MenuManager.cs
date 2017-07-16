@@ -9,6 +9,9 @@ public class MenuManager : MonoBehaviour {
     public Button startButton;
     public Button exitButton;
 
+    private string formatString;
+    public Text scoreText;
+
 	// Use this for initialization
 	void Start () {
 		startButton.onClick.AddListener(()=> {
@@ -18,4 +21,11 @@ public class MenuManager : MonoBehaviour {
             Application.Quit();
         });
 	}
+
+    void OnEnable() {
+        if (scoreText != null) {
+            formatString = scoreText.text;
+            scoreText.text = string.Format(formatString, GameManager.scoreCount);
+        }
+    }
 }
