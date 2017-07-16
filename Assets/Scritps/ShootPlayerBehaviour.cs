@@ -28,9 +28,9 @@ public class ShootPlayerBehaviour : MonoBehaviour {
             int count = Random.Range((int)salvoSize.min, (int)salvoSize.max);
             for(int i = 0; i < count; i++) {
                 GameObject bullet = Instantiate(bulletPrefab, 
-                    transform.position + transform.forward, Quaternion.identity);
-                bullet.GetComponent<Rigidbody2D>().AddForce(transform.forward * 
-                    bulletSpeed);
+                    transform.position + transform.up * 2, Quaternion.identity);
+                Rigidbody2D bulletRig = bullet.GetComponent<Rigidbody2D>();
+                bulletRig.AddForce(transform.up * bulletSpeed);
                 yield return new WaitForSeconds(0.2f);
             }
         }

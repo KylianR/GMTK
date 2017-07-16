@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     int firePowerUp;
     int fireSpeedUp;
 
+
     public GameObject bulletPrefab;
     new Rigidbody2D rigidbody;
 
@@ -37,6 +38,9 @@ public class PlayerController : MonoBehaviour {
             return health;
         }
         set {
+            if (value < health) {
+                StartCoroutine(FlashRed());
+            }
             if (value < 0) {
                 health = 0;
                 Die();
@@ -45,14 +49,18 @@ public class PlayerController : MonoBehaviour {
             health = value;
         }
     }
+    public float healRate = 60;
     float bulletDamage = 10;
 
+    new SpriteRenderer renderer;
+    
     private void Die() {
         // Do stuff?
     }
 
     // Use this for initialization
     void Start () {
+        renderer = GetComponent<SpriteRenderer>();
 		rigidbody = GetComponent<Rigidbody2D>();
         baseManager = FindObjectOfType<BaseManager>();
 
@@ -77,7 +85,6 @@ public class PlayerController : MonoBehaviour {
 	}
 
     void Update() {
-
     }
 
     // Update is called once per frame
@@ -104,11 +111,26 @@ public class PlayerController : MonoBehaviour {
             Shoot();
 
         }
-        if (Input.GetMouseButton(0) && Time.time - lastShotTime > (bulletDelay / fireSpeed)) {
-            lastShotTime = Time.time;
-            Shoot();
+        if (Input.GetMouseButton(0)) {
+            if (Time.time - lastShotTime > (bulletDelay / fireSpeed)) {
+                lastShotTime = Time.time;
+                Shoot();
+            }
+        } else {
+            health += healRate * shield * Time.deltaTime;
+            if (health > 100) {
+                health = 100;
+            }
         }
 	}
+
+    IEnumerator FlashRed() {
+        if (renderer.color == Color.white) {
+            renderer.color = Color.red;
+            yield return new WaitForSeconds(1/30);
+            renderer.color = Color.white;
+        }
+    }
 
     public void Shoot() {
         GameObject bullet = Instantiate(bulletPrefab, transform.position + 
@@ -164,6 +186,7 @@ public class PlayerController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyBullet")) {
             Health -= bulletDamage / shield;
+            Destroy(collision.gameObject);
         }
     }
 }

@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212904829721510548}
   - component: {fileID: 58470383384598196}
   - component: {fileID: 50464249007023328}
-  - component: {fileID: 114354393015710912}
   - component: {fileID: 114065048376796778}
   - component: {fileID: 114756275321140562}
+  - component: {fileID: 114434384279854178}
   m_Layer: 11
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -214,7 +214,7 @@ MonoBehaviour:
   speed: 10
   minDistance: 1
   minPlayerDist: 100
---- !u!114 &114354393015710912
+--- !u!114 &114434384279854178
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -225,16 +225,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a569f8836110c849b0d3f2b3bd825e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPlayerDist: 300
+  minPlayerDist: 1000
   bulletSpeed: 1000
   bulletPrefab: {fileID: 1468611516449952, guid: 33587fa5cba9f9349bc77dd37268cf37,
     type: 2}
   salvoSize:
-    min: 2
+    min: 3
     max: 8
   shootDelay:
     min: 2
-    max: 6
+    max: 5
 --- !u!114 &114756275321140562
 MonoBehaviour:
   m_ObjectHideFlags: 1

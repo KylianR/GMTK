@@ -55,13 +55,11 @@ public class AstroidSpawner : MonoBehaviour {
 [CustomEditor(typeof(AstroidSpawner))]
 public class AstroidSpawnerEditor : Editor
 {
-    public override void OnInspectorGUI()
-    {
+    public override void OnInspectorGUI() {
         DrawDefaultInspector();
         
         AstroidSpawner myScript = (AstroidSpawner)target;
-        if(GUILayout.Button("Build Object"))
-        {
+        if(GUILayout.Button("Build Object")) {
             myScript.Generate();
         }
     }
