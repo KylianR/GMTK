@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SearchPlayerBehaviour : MonoBehaviour {
 
-    public float speed = 10;
+    public float playerSpeedMultiplier = 0.475f;
     public bool minDistance = true;
     public float minPlayerDist = 100;
 
@@ -20,7 +20,7 @@ public class SearchPlayerBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        speed = 1 + (playerRigid.velocity.magnitude) * 0.475f; 
+        float speed = 1 + (playerRigid.velocity.magnitude) * playerSpeedMultiplier; 
         if (!minDistance || (minDistance && Vector3.Distance(
             transform.position, player.position) <= minPlayerDist)) {
             transform.position = Vector3.MoveTowards(transform.position, 
