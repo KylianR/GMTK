@@ -20,7 +20,7 @@ public class SearchPlayerBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        speed = 1 + (playerRigid.velocity.magnitude) * 0.475f; 
+        speed = 15 + (playerRigid.velocity.magnitude) * 0.475f; 
         if (!minDistance || (minDistance && Vector3.Distance(
             transform.position, player.position) <= minPlayerDist)) {
             transform.position = Vector3.MoveTowards(transform.position, 

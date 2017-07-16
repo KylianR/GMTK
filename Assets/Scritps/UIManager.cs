@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour {
 		float kmph = player.GetComponent<Rigidbody2D>().velocity.magnitude * 3.6f;
         speedText.text = string.Format(formatText, kmph.ToString("0.00"));
 
-        objectiveText.text = "Remaining Enemies: " + GameManager.enemyCount;
+        objectiveText.text = "Remaining Enemies: " + GameManager.enemyCount + "            " + "Score: " + GameManager.scoreCount;
 
         // Do UI things
         for (int targetIndex = 0; targetIndex < targets.Count; targetIndex++) {

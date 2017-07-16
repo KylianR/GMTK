@@ -34,22 +34,25 @@ public class EnemySpawner : MonoBehaviour {
 
             float enemychoice = Random.Range(0f, 2.4f);
             if(enemychoice < 1.5){
-                int count = Random.Range(3, 5);
+                int count = Random.Range(12, 18);
                 for (int i = 0; i < count; i++)
                 {
                     float loc = Random.Range(0f, 2 * 3.1415926535897932384626f);
-                    float dist = Random.Range(15.0f, 35.0f);
+                    float dist = Random.Range(150.0f, 350.0f);
                     Vector3 point = new Vector3(Mathf.Cos(loc), Mathf.Sin(loc)) * dist;
                     Vector3 location = transform.position + point;
                     Instantiate(enemy3, location, Quaternion.identity);
                 }
             }
+
+            
+
             if(enemychoice < 2 && enemychoice >= 1.5){
-                int count = Random.Range(2, 3);
+                int count = Random.Range(7, 10);
                 for (int i = 0; i < count; i++)
                 {
                     float loc = Random.Range(0f, 2 * 3.1415926535897932384626f);
-                    float dist = Random.Range(15.0f, 35.0f);
+                    float dist = Random.Range(150.0f, 350.0f);
                     Vector3 point = new Vector3(Mathf.Cos(loc), Mathf.Sin(loc)) * dist;
                     Vector3 location = transform.position + point;
                     Instantiate(enemy2, location, Quaternion.identity);
@@ -58,11 +61,11 @@ public class EnemySpawner : MonoBehaviour {
 
             if (enemychoice < 2.4 && enemychoice >= 2.0)
             {
-                int count = Random.Range(2, 3);
+                int count = Random.Range(4, 9);
                 for (int i = 0; i < count; i++)
                 {
                     float loc = Random.Range(0f, 2 * 3.1415926535897932384626f);
-                    float dist = Random.Range(15.0f, 35.0f);
+                    float dist = Random.Range(50.0f, 350.0f);
                     Vector3 point = new Vector3(Mathf.Cos(loc), Mathf.Sin(loc)) * dist;
                     Vector3 location = transform.position + point;
                     Instantiate(enemy1, location, Quaternion.identity);
@@ -99,7 +102,7 @@ public class EnemySpawner : MonoBehaviour {
                }
            } */
         }
-        yield return new WaitForSeconds(Random.Range(1.5f, 3.0f));
+        yield return new WaitForSeconds(Random.Range(1.0f, 2.0f));
         yield return StartCoroutine(SpawnEnemies());
     }
 }

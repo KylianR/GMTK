@@ -46,9 +46,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
     float bulletDamage = 10;
+    float collisionDamage = 5;
 
     private void Die() {
-        // Do stuff?
+        print("you lost");
     }
 
     // Use this for initialization
@@ -161,9 +162,17 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyBullet")) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
+        {
             Health -= bulletDamage / shield;
         }
-    }
+
+        if (collision.gameObject.name.Contains("Enemy 3"))
+        {
+            Destroy(collision.gameObject);
+            Health -= bulletDamage / shield;
+        }
+    }        
 }

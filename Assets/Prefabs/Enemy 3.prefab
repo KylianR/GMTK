@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 212417941578705738}
   - component: {fileID: 58465544818690818}
   - component: {fileID: 50128253297609936}
-  - component: {fileID: 114271301576819596}
   - component: {fileID: 114462725652797504}
   - component: {fileID: 114555100750881190}
   m_Layer: 11
@@ -200,27 +199,6 @@ TrailRenderer:
     textureMode: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114271301576819596
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1694498593484602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a569f8836110c849b0d3f2b3bd825e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minPlayerDist: 300
-  bulletSpeed: 1000
-  bulletPrefab: {fileID: 1468611516449952, guid: 33587fa5cba9f9349bc77dd37268cf37,
-    type: 2}
-  salvoSize:
-    min: 2
-    max: 8
-  shootDelay:
-    min: 2
-    max: 6
 --- !u!114 &114462725652797504
 MonoBehaviour:
   m_ObjectHideFlags: 1
