@@ -8,10 +8,10 @@ public class EnemyManager : MonoBehaviour {
     private float health = 100;
     public float Health {
         get {
-            return 100;
+            return health;
         }
         set {
-            if (value < 0) {
+            if (value <= 0) {
                 health = 0;
                 Die();
                 return;
@@ -39,7 +39,7 @@ public class EnemyManager : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet")) {
-            health -= damage;
+            Health -= damage;
             Destroy(collision.gameObject);
         }
     }

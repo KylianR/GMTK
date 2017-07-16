@@ -30,7 +30,7 @@ public class ShootPlayerBehaviour : MonoBehaviour {
                 GameObject bullet = Instantiate(bulletPrefab, 
                     transform.position + transform.forward, Quaternion.identity);
                 bullet.GetComponent<Rigidbody2D>().AddForce(transform.forward * 
-                    bulletSpeed, ForceMode2D.Impulse);
+                    bulletSpeed);
                 yield return new WaitForSeconds(0.2f);
             }
         }

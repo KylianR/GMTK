@@ -6,18 +6,17 @@ public class EnemySpawner : MonoBehaviour {
 
     BaseManager homeBase;
 
+    public int maxEnemies = 1000;
     public float spawnRadius = 10;
 
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
-    public Transform player; 
     
 	// Use this for initialization
 	void Start () {
 		homeBase = FindObjectOfType<BaseManager>();
         StartCoroutine(SpawnEnemies());
-        player = GameObject.FindWithTag("Player").transform; 
 
     }
 	
@@ -29,7 +28,7 @@ public class EnemySpawner : MonoBehaviour {
     IEnumerator SpawnEnemies() {
 
 
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 100) {
+        if (GameManager.enemyCount < maxEnemies) {
 
             //yield return new WaitForSeconds(Random.Range(1.5f, 5.0f))
 
@@ -41,7 +40,7 @@ public class EnemySpawner : MonoBehaviour {
                     float loc = Random.Range(0f, 2 * 3.1415926535897932384626f);
                     float dist = Random.Range(15.0f, 35.0f);
                     Vector3 point = new Vector3(Mathf.Cos(loc), Mathf.Sin(loc)) * dist;
-                    Vector3 location = player.position + point;
+                    Vector3 location = transform.position + point;
                     Instantiate(enemy3, location, Quaternion.identity);
                 }
             }
@@ -52,7 +51,7 @@ public class EnemySpawner : MonoBehaviour {
                     float loc = Random.Range(0f, 2 * 3.1415926535897932384626f);
                     float dist = Random.Range(15.0f, 35.0f);
                     Vector3 point = new Vector3(Mathf.Cos(loc), Mathf.Sin(loc)) * dist;
-                    Vector3 location = player.position + point;
+                    Vector3 location = transform.position + point;
                     Instantiate(enemy2, location, Quaternion.identity);
                 }
             }
@@ -65,7 +64,7 @@ public class EnemySpawner : MonoBehaviour {
                     float loc = Random.Range(0f, 2 * 3.1415926535897932384626f);
                     float dist = Random.Range(15.0f, 35.0f);
                     Vector3 point = new Vector3(Mathf.Cos(loc), Mathf.Sin(loc)) * dist;
-                    Vector3 location = player.position + point;
+                    Vector3 location = transform.position + point;
                     Instantiate(enemy1, location, Quaternion.identity);
                 }
             }
