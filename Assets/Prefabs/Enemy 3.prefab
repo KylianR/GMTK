@@ -90,9 +90,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &58465544818690818
 CircleCollider2D:
@@ -211,9 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeedMultiplier: 0.475
-  minDistance: 0
   distanceToPlayer: 0
-  minPlayerDist: 100
 --- !u!114 &114555100750881190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,7 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  damage: 1
 --- !u!212 &212417941578705738
 SpriteRenderer:
   m_ObjectHideFlags: 1

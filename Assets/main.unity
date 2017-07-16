@@ -1947,6 +1947,16 @@ Prefab:
       propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 50756810679049194, guid: 5ba3d10587994804eab8d856f335fd22,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50756810679049194, guid: 5ba3d10587994804eab8d856f335fd22,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ba3d10587994804eab8d856f335fd22, type: 2}
   m_IsPrefabParent: 0
