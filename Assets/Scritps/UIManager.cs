@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        TurnGoalPanelOff();
         if (player == null) {
             player = GameObject.FindWithTag("Player").transform;
         }		
@@ -57,18 +56,5 @@ public class UIManager : MonoBehaviour {
             float angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg - 90;
             uiTargets[targetIndex].rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-
-        // Objective text
-        objectiveText.text = "Current Objective: " + 
-            ((GameManager.Instance.currentObjective)?
-                GameManager.Instance.currentObjective.name : 
-                "none");
 	}
-
-    public void TurnGoalPanelOn() {
-        goalPanel.gameObject.SetActive(true);
-    }
-    public void TurnGoalPanelOff() {
-        goalPanel.gameObject.SetActive(false);
-    }
 }

@@ -85,7 +85,6 @@ public class PlayerController : MonoBehaviour {
         
         // Base
         case "Base":
-            FindObjectOfType<UIManager>().TurnGoalPanelOn();
             // Stop that shizl
             transform.position = other.transform.position;
             transform.rotation = other.transform.rotation;
@@ -107,11 +106,6 @@ public class PlayerController : MonoBehaviour {
             break;
         case "Speed Field":
             fireSpeedUp -= 1;
-            break;
-
-        // Base
-        case "Base":
-            FindObjectOfType<UIManager>().TurnGoalPanelOff();
             break;
         }
     }
