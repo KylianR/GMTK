@@ -6,18 +6,18 @@ public class PlayerController : MonoBehaviour {
 
     public int shield { get { return shieldBase + shieldUp; } }
     [SerializeField]
-    public int firePower { get { return firePowerBase + firePowerUp; } }
+    public static int firePower { get { return firePowerBase + firePowerUp; } }
     [SerializeField]
     public int fireSpeed { get { return fireSpeedBase + fireSpeedUp; } }
 
     // The base value
     int shieldBase;
-    int firePowerBase;
+    static int firePowerBase;
     int fireSpeedBase;
 
     // The upgraded or downgraded amounts
     int shieldUp;
-    int firePowerUp;
+    static int firePowerUp;
     int fireSpeedUp;
 
 
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour {
 
         }
         if (Input.GetMouseButton(0)) {
-            if (Time.time - lastShotTime > (bulletDelay / fireSpeed)) {
+            if (Time.time - lastShotTime > (bulletDelay / (fireSpeed * 2))) {
                 lastShotTime = Time.time;
                 Shoot();
             }

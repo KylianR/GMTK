@@ -23,8 +23,6 @@ public class EnemyManager : MonoBehaviour {
         }
     }
 
-    public float damage = 10;
-
     new SpriteRenderer renderer;
 
 	// Use this for initialization
@@ -54,7 +52,7 @@ public class EnemyManager : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet")) {
-            Health -= damage;
+            Health -= PlayerController.firePower;
             Destroy(collision.gameObject);
         }
     }

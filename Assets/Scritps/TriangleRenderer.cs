@@ -39,7 +39,7 @@ public class TriangleRenderer : MonoBehaviour {
 	void Update () {
         shield = player.shield * (maxLength / 5);
         fireRate = player.fireSpeed * (maxLength / 5);
-        firePower = player.firePower * (maxLength / 5);
+        firePower = PlayerController.firePower * (maxLength / 5);
 
         points[2].y = Mathf.Clamp(shield, 0, maxLength);
 
