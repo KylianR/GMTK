@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
     BaseManager baseManager;
 
     [SerializeField]
+    public bool dead;
     private float health;
     public float Health {
         get {
@@ -56,7 +57,8 @@ public class PlayerController : MonoBehaviour {
     new SpriteRenderer renderer;
     
     private void Die() {
-        print("you lost");
+        dead = true;
+        PlayerPrefs.SetInt("Score ", GameManager.scoreCount);
     }
 
     // Use this for initialization
@@ -90,6 +92,8 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
+        if (dead) return;
+
         // Rotate the player towards the mouse button
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Quaternion rotation = Quaternion.LookRotation((transform.position - mousePos), 
@@ -126,6 +130,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
     IEnumerator FlashRed() {
+        ScreenShake.Instance.Shake(0.3f, 0.1f);
         if (renderer.color == Color.white) {
             renderer.color = Color.red;
             yield return new WaitForSeconds(1/30);

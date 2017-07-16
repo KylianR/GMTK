@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
 
     public Text objectiveText;
+    public GameObject scoreBoard;
 
     [Header("Speedometer")]
     public string formatText = "{0} Km/h";
     public Text speedText;
     public Transform player;
+    public PlayerController controller;
 
     [Header("Targeting")]
     public int offset = 10;
@@ -30,6 +32,8 @@ public class UIManager : MonoBehaviour {
         if (player == null) {
             player = GameObject.FindWithTag("Player").transform;
         }
+        controller = player.GetComponent<PlayerController>();
+        scoreBoard.SetActive(false);
 
         sliderRect = slider.GetComponent<RectTransform>();
 
@@ -39,6 +43,10 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (controller.dead) {
+            scoreBoard.SetActive(true);
+        }
+
         slider.maxValue = 100;
         slider.value = playerController.Health;
 
