@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour {
     new SpriteRenderer renderer;
     
     private void Die() {
-        // Do stuff?
+        
     }
 
     // Use this for initialization
@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
     IEnumerator FlashRed() {
+        ScreenShake.Instance.Shake(0.3f, 0.1f);
         if (renderer.color == Color.white) {
             renderer.color = Color.red;
             yield return new WaitForSeconds(1/30);
