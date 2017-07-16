@@ -48,6 +48,7 @@ public class EnemyManager : MonoBehaviour {
 
     void Die() {
 		GameManager.enemyCount--;
+        GameManager.scoreCount++;
         Destroy(gameObject);
     }
 

@@ -51,11 +51,12 @@ public class PlayerController : MonoBehaviour {
     }
     public float healRate = 60;
     float bulletDamage = 10;
+    float collisionDamage = 5;
 
     new SpriteRenderer renderer;
     
     private void Die() {
-        
+        GameManager.scoreCount;
     }
 
     // Use this for initialization
@@ -184,10 +185,18 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyBullet")) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
+        {
             Health -= bulletDamage / shield;
             Destroy(collision.gameObject);
         }
-    }
+
+        if (collision.gameObject.name.Contains("Enemy 3"))
+        {
+            Destroy(collision.gameObject);
+            Health -= bulletDamage / shield;
+        }
+    }        
 }
