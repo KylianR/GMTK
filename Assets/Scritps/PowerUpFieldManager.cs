@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using System;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class PowerUpFieldManager : MonoBehaviour {
 
@@ -19,6 +23,19 @@ public class PowerUpFieldManager : MonoBehaviour {
 		renderer = GetComponent<MeshRenderer>();
         filter = GetComponent<MeshFilter>();
 
+        Generate();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	    
+	}
+
+    internal void Generate() {
+        polygon = GetComponent<PolygonCollider2D>();
+		renderer = GetComponent<MeshRenderer>();
+        filter = GetComponent<MeshFilter>();
+
         mesh = new Mesh();
         vertices = new List<Vector3>(polygon.points.Length);
         foreach(Vector2 point in polygon.points) {
@@ -32,10 +49,22 @@ public class PowerUpFieldManager : MonoBehaviour {
         mesh.RecalculateBounds();
 
         filter.mesh = mesh;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
+    }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(PowerUpFieldManager))]
+public class PowerUpFieldManagerEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+        
+        PowerUpFieldManager myScript = (PowerUpFieldManager)target;
+        if(GUILayout.Button("Build Mesh"))
+        {
+            myScript.Generate();
+        }
+    }
+}
+#endif

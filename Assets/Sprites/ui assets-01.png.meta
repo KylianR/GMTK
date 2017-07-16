@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d22e7368dfe68b242b444d0f0bc82b39
-timeCreated: 1500130142
+timeCreated: 1500214650
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,14 @@ TextureImporter:
     21300010: ui assets-01_5
     21300012: ui assets-01_6
     21300014: ui assets-01_7
+    21300016: ui assets-01_8
+    21300018: ui assets-01_9
+    21300020: ui assets-01_10
+    21300022: ui assets-01_11
+    21300024: ui assets-01_12
+    21300026: ui assets-01_13
+    21300028: ui assets-01_14
+    21300030: ui assets-01_15
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -94,7 +102,7 @@ TextureImporter:
         width: 1184
         height: 1076
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -107,7 +115,7 @@ TextureImporter:
         width: 288
         height: 314
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -120,7 +128,7 @@ TextureImporter:
         width: 285
         height: 215
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -133,7 +141,7 @@ TextureImporter:
         width: 301
         height: 141
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -146,7 +154,7 @@ TextureImporter:
         width: 1143
         height: 1115
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -159,7 +167,7 @@ TextureImporter:
         width: 535
         height: 428
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -172,7 +180,7 @@ TextureImporter:
         width: 406
         height: 491
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -184,6 +192,110 @@ TextureImporter:
         y: 2872
         width: 475
         height: 452
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui assets-01_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 2026
+        width: 1322
+        height: 938
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui assets-01_9
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1074
+        width: 1159
+        height: 867
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui assets-01_10
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 726
+        width: 1096
+        height: 881
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui assets-01_11
+      rect:
+        serializedVersion: 2
+        x: 1693
+        y: 1826
+        width: 802
+        height: 940
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui assets-01_12
+      rect:
+        serializedVersion: 2
+        x: 2766
+        y: 1805
+        width: 742
+        height: 790
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui assets-01_13
+      rect:
+        serializedVersion: 2
+        x: 3618
+        y: 1868
+        width: 548
+        height: 606
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui assets-01_14
+      rect:
+        serializedVersion: 2
+        x: 2973
+        y: 926
+        width: 843
+        height: 723
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui assets-01_15
+      rect:
+        serializedVersion: 2
+        x: 3226
+        y: 3374
+        width: 244
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

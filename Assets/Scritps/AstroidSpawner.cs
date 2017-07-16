@@ -53,7 +53,7 @@ public class AstroidSpawner : MonoBehaviour {
 }
 #if UNITY_EDITOR
 [CustomEditor(typeof(AstroidSpawner))]
-public class ObjectBuilderEditor : Editor
+public class AstroidSpawnerEditor : Editor
 {
     public override void OnInspectorGUI()
     {
