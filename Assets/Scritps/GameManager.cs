@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public static int enemyCount = 0;
+
     // Objective variables
     // Destroy Objecive
     GameObject destroyObjectiveTarget;

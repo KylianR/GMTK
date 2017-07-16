@@ -25,10 +25,36 @@ public class PlayerController : MonoBehaviour {
 
     [Range(0.1f, 1000.0f)]
     public float bulletForce;
+    public float bulletDelay = 0.2f;
+    float lastShotTime;
 
-	// Use this for initialization
-	void Start () {
+    BaseManager baseManager;
+
+    [SerializeField]
+    private float health;
+    public float Health {
+        get {
+            return health;
+        }
+        set {
+            if (value < 0) {
+                health = 0;
+                Die();
+                return;
+            }
+            health = value;
+        }
+    }
+    float bulletDamage = 10;
+
+    private void Die() {
+        // Do stuff?
+    }
+
+    // Use this for initialization
+    void Start () {
 		rigidbody = GetComponent<Rigidbody2D>();
+        baseManager = FindObjectOfType<BaseManager>();
 
         // Generate values between one and five.
         // You have five to spend
@@ -43,32 +69,57 @@ public class PlayerController : MonoBehaviour {
         toSpend -= value;
 
         fireSpeedBase = toSpend;
+
+        // 
+        Health = 100;
+
+        lastShotTime = Time.time;
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    void Update() {
+
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
         // Rotate the player towards the mouse button
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Quaternion rotation = Quaternion.LookRotation((transform.position - mousePos), 
                                                       Vector3.forward);
         rotation = Quaternion.Euler(0, 0, rotation.eulerAngles.z);
         transform.rotation = rotation;
-
+        
+        float baseDistance = Vector3.Distance(transform.position, 
+                                              baseManager.transform.position);
+        if (baseDistance > baseManager.enemyHardRadius) {
+            float magnitude = baseDistance - baseManager.enemyHardRadius;
+            rigidbody.AddForce((baseManager.transform.position - transform.position) *
+                               magnitude);
+        }
 
 		if (Input.GetMouseButtonDown(0)) {
             if (rigidbody.IsSleeping()) {
                 rigidbody.WakeUp();
             }
-            GameObject bullet = Instantiate(bulletPrefab, transform.position + 
-                transform.up, Quaternion.identity);
-            Vector2 force = transform.up * bulletForce;
-            Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+            Shoot();
 
-            // These forces should be symetrical!
-            bulletRigidbody.AddForce(force, ForceMode2D.Impulse);
-            rigidbody.AddForce(-force, ForceMode2D.Impulse);
+        }
+        if (Input.GetMouseButton(0) && Time.time - lastShotTime > bulletDelay) {
+            lastShotTime = Time.time;
+            Shoot();
         }
 	}
+
+    public void Shoot() {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position + 
+            transform.up, Quaternion.identity);
+        Vector2 force = transform.up * bulletForce;
+        Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+
+        // These forces should be symetrical!
+        bulletRigidbody.AddForce(force, ForceMode2D.Impulse);
+        rigidbody.AddForce(-force, ForceMode2D.Impulse);
+    }
 
     void OnTriggerEnter2D(Collider2D other) {
         switch (other.gameObject.tag) {
@@ -107,6 +158,12 @@ public class PlayerController : MonoBehaviour {
         case "Speed Field":
             fireSpeedUp -= 1;
             break;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyBullet")) {
+            Health -= bulletDamage / shield;
         }
     }
 }
